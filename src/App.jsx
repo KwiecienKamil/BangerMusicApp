@@ -34,7 +34,7 @@ function App() {
       <Player song={songD} isPlaying={isPlaying} setIsPlaying={setIsPlaying} audioRef={audioRef}/>
       <audio ref={audioRef} src={songD.value[1]} onTimeUpdate={onPlaying} />
       <Routes>
-      <Route path="/" element={<Discover />} />
+      <Route path="/" element={<Discover setIsPlaying={setIsPlaying}/>} />
       <Route path="/topartists" element={<TopArtists />} />
       <Route path="/topsongs" element={<TopSongs />} />
       </Routes>

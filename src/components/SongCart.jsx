@@ -5,7 +5,7 @@ import {musicData} from '../assets/audioData/musicData'
 import { current, currentProg } from "../services/state/redux/store";
 
 
-const SongCart = ({ song}) => {
+const SongCart = ({ song, setIsPlaying}) => {
   const dispatch = useDispatch()
   const currentSong = musicData.filter((item) => item.title === song.title);
 
@@ -16,6 +16,7 @@ const SongCart = ({ song}) => {
     const artist = song.subtitle
     dispatch(current([title,mp3,artist]))
     dispatch(currentProg([0, 0]))
+    setIsPlaying(false)
   }
 
 

@@ -10,15 +10,20 @@ export const songsSlice = createSlice({
       "/src/assets/audioData/greedy.mp3",
       "Tate McRae"
     ],
+    songProg: [0, 0]
   },
   reducers: {
     current: (state, action) => {
       state.value = action.payload;
     },
+    currentProg: (state, action) => {
+      state.songProg = action.payload;
+    },
   },
 });
 
 export const { current } = songsSlice.actions;
+export const { currentProg } = songsSlice.actions;
 
 export const store = configureStore({
   reducer: {

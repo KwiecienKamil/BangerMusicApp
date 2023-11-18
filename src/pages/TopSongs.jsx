@@ -8,7 +8,6 @@ import Header from '../utils/header';
 const TopSongs = () => {
   const { data, isFetching } = useGetTopChartsQuery();
   if (isFetching) return <Loader title="Loading..." />;
-  console.log(data.tracks)
 
   const arr = [];
   const topChartsFn = () => {

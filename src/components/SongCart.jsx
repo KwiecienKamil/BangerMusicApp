@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { useDispatch} from "react-redux";
 import {musicData} from '../assets/audioData/musicData'
-import { current } from "../services/state/redux/store";
+import { current, currentProg } from "../services/state/redux/store";
 
 
 const SongCart = ({ song}) => {
@@ -15,6 +15,7 @@ const SongCart = ({ song}) => {
     const title = currentSong[0].title
     const artist = song.subtitle
     dispatch(current([title,mp3,artist]))
+    dispatch(currentProg([0, 0]))
   }
 
 

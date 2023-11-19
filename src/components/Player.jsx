@@ -62,7 +62,7 @@ const Player = ({ song, audioRef, isPlaying, setIsPlaying, data }) => {
       <div className="absolute left-0 h-full w-[34%] lg:w-[20%] bg-white/5 flex items-center justify-center gap-2">
         <img
           src={songP.value[4]}
-          alt="coverart"
+          
           className="h-[90%] rounded-lg"
         />
         <div className="flex flex-col items-center justify-center gap-[2px]">

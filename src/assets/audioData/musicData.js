@@ -18,7 +18,7 @@ import love from "../audioData/My Love.mp3";
 // import harley from "../audioData/harley.mp3";
 // import now from "../audioData/Now.mp3";
 // import petit from "../audioData/petit.mp3";
-import JID from "../audioData/JID.mp3";
+import JID from "../audioData/jid.mp3";
 import thing from "../audioData/thing.mp3";
 // import Flow from "../audioData/Flow.mp3";
 import lose from "../audioData/lose.mp3";

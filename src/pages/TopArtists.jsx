@@ -16,6 +16,7 @@ const TopArtists = () => {
                 age={item.age}
                 src={item.src}
                 id={item.key}
+                key={item.key}
                 profile={item.profile}
               />
             );

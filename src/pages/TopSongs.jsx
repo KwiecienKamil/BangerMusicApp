@@ -22,6 +22,7 @@ const TopSongs = () => {
         <div className="grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
           {arr.map((item) => (
             <ChartsCard
+              key={item.key}
               id={item.key}
               title={item.title}
               artist={item.subtitle}

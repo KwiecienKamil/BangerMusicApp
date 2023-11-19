@@ -20,7 +20,7 @@ const TopSongs = () => {
      <div className="lg:w-[80vw]">
      <Header route="Top Songs"/>
         {topChartsFn()}
-        <div className='md:grid md:grid-cols-2'>
+        <div className='grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3'>
         {arr.map((item) => <ChartsCard id={item.key} title={item.title} artist={item.subtitle} src={item.images.coverart} href={item.share.href}/> )}
         </div>
      </div>

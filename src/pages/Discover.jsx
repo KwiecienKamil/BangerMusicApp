@@ -8,8 +8,7 @@ import Header from "../utils/header";
 
 
 
-const Discover = ({setIsPlaying}) => {
-  const { data, isFetching, error } = useGetTopChartsQuery();
+const Discover = ({setIsPlaying,data,isFetching,error}) => {
   if (isFetching) return <Loader title="Loading..." />;
   if (error) return <Error />;
   return (
@@ -19,7 +18,7 @@ const Discover = ({setIsPlaying}) => {
       <div className="px-4 my-4 pb-32">
         <div className="">
         </div>
-        <div className="grid grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4 mt-4 md:px-12 lg:px-24 pb-4">
+        <div className="grid grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-8 mt-4 md:px-12 lg:px-24 pb-4">
           {data?.tracks.map((song, i) => (
             <SongCart key={song.key} data={data} song={song} i={i} setIsPlaying={setIsPlaying} />
           ))}

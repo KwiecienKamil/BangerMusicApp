@@ -11,7 +11,9 @@ export default {
         bgGradient1: "#39ff14",
         bgGradient2: "#0D8617",
         player: "#2272FF",
-        navbar: "#1A1A1A"
+        navbar: "#1A1A1A",
+        onyx: "#454545",
+        silver: "#AEB1AE"
       },
       animation: {
         slideup: 'slideup 1s ease-in-out',

@@ -7,8 +7,10 @@ import Player from "./components/Player"
 import { useEffect, useRef, useState } from "react"
 import { useDispatch, useSelector } from "react-redux"
 import { currentProg } from "./services/state/redux/store"
+import { useGetTopChartsQuery } from "./services/TopChartsApi"
 
 function App() {
+  const { data, isFetching, error } = useGetTopChartsQuery();
   const dispatch = useDispatch()
   const [isPlaying, setIsPlaying] = useState(false);
   const audioRef = useRef();
@@ -31,10 +33,10 @@ function App() {
   return (
     <>  
       <Navbar />
-      <Player song={songD} isPlaying={isPlaying} setIsPlaying={setIsPlaying} audioRef={audioRef}/>
+      <Player song={songD} isPlaying={isPlaying} setIsPlaying={setIsPlaying} audioRef={audioRef} data={data}/>
       <audio ref={audioRef} src={songD.value[1]} onTimeUpdate={onPlaying} />
       <Routes>
-      <Route path="/" element={<Discover setIsPlaying={setIsPlaying}/>} />
+      <Route path="/" element={<Discover setIsPlaying={setIsPlaying} data={data} isFetching={isFetching} error={error}/>} />
       <Route path="/topartists" element={<TopArtists />} />
       <Route path="/topsongs" element={<TopSongs />} />
       </Routes>

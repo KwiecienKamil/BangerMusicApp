@@ -1,13 +1,16 @@
-import React, { useState, useRef, useEffect }  from 'react'
-import { FaPauseCircle, FaPlayCircle} from "react-icons/fa";
-import {GiMusicalNotes} from 'react-icons/gi'
-import { useSelector } from 'react-redux';
+import React, { useRef } from "react";
+import { FaPauseCircle, FaPlayCircle } from "react-icons/fa";
+import { BiSolidSkipPreviousCircle } from "react-icons/bi";
+import { useDispatch, useSelector } from "react-redux";
+import { BiSolidSkipNextCircle } from "react-icons/bi";
+import { musicData } from "../assets/audioData/musicData";
+import { current } from "../services/state/redux/store";
 
-
-const Player = ({song, audioRef, isPlaying, setIsPlaying}) => {
-  const songP = useSelector((state) => state.song)
-  
-  const clickRef = useRef()
+const Player = ({ song, audioRef, isPlaying, setIsPlaying, data }) => {
+  const dispatch = useDispatch();
+  const songP = useSelector((state) => state.song);
+  const clickRef = useRef();
+  const songD = data?.tracks.map((item) => item);
 
   const handlePlayPause = () => {
     setIsPlaying(!isPlaying);
@@ -16,36 +19,99 @@ const Player = ({song, audioRef, isPlaying, setIsPlaying}) => {
   const changeWidth = (e) => {
     let width = clickRef.current.clientWidth;
     const offset = e.nativeEvent.offsetX;
+    const divprogress = (offset / width) * 100;
+    audioRef.current.currentTime = (divprogress / 100) * songP.songProg[1];
+  };
 
-    const divprogress = offset / width * 100;
-    audioRef.current.currentTime = divprogress / 100 * songP.songProg[1]
-  }
+  const nextSong = () => {
+    let curIndex = parseInt(song.value[3]);
+    let curS = musicData.filter((item) => item.index == curIndex + 1);
+    let index = curS.map((item) => item.index).toString();
+    const mp3 = curS[0].mp3;
+    const title = curS[0].title;
+    const getData = songD.filter((item) => item.title == title);
+    const artist = getData[0].subtitle;
+    const img = getData[0].images.coverart;
+    if(index == musicData.length - 1) {
+      index = 0;
+    }
+    dispatch(current([title, mp3, artist, index,img]));
+    setIsPlaying(false);
+  };
+
+  const prevSong = () => {
+    let curIndex = parseInt(song.value[3]);
+    let curS = musicData.filter((item) => item.index == curIndex - 1);
+    let index = curS.map((item) => item.index).toString();
+    const mp3 = curS[0].mp3;
+    const title = curS[0].title;
+    const getData = songD.filter((item) => item.title == title);
+    const artist = getData[0].subtitle;
+    const img = getData[0].images.coverart;
+    if(index == musicData.length - 1) {
+      index = 0;
+    }else if (index == 1){
+      index = musicData.length - 1;
+    } 
+    dispatch(current([title, mp3, artist, index,img]));
+      setIsPlaying(false);
+  };
 
   return (
-    <div className="z-10 fixed h-[50px] lg:h-[10%] bottom-[70px] lg:bottom-0 left-0 w-full bg-black flex justify-between md:px-16 lg:px-28 font-poppins font-semibold text-bgGradient1">
-       <a href='/' className='text-[15px] md:text-[18px] lg:text-[23px] font-danc flex items-center gap-1'>Banger<GiMusicalNotes /></a>
-      <div className="flex gap-8">
-      <div className="flex flex-col items-center justify-center gap-[2px] pr-2">
-        <h1 className='text-center text-[11px] md:text-[14px] lg:text-[16px] trim line-clamp-1'>{song.value[0]}</h1>
-        <h2 className='text-center text-[9px] md:text-[12px] lg:text-[14px]'>{song.value[2]}</h2>
+    <div className="z-10 fixed h-[60px] lg:h-[12%] bottom-[70px] lg:bottom-0 left-0 w-full bg-black flex justify-between font-poppins font-semibold text-white">
+      <div className="absolute left-0 h-full w-[34%] lg:w-[20%] bg-white/5 flex items-center justify-center gap-2">
+        <img
+          src={songP.value[4]}
+          alt="coverart"
+          className="h-[90%] rounded-lg"
+        />
+        <div className="flex flex-col items-center justify-center gap-[2px]">
+          <h1 className="text-center text-[11px] md:text-[14px] lg:text-[16px] trim line-clamp-1">
+            {song.value[0]}
+          </h1>
+          <h2 className="text-center text-[9px] md:text-[12px] lg:text-[14px]">
+            {song.value[2]}
+          </h2>
+        </div>
       </div>
-      <div onClick={changeWidth} ref={clickRef} className="relative flex items-center cursor-pointer w-[200px]">
-      <div style={{width: `${songP.songProg[0] + "%"}`}} className="z-[10] h-[3px] bg-bgGradient1"></div>
-      </div>
-      <div className="flex items-center justify-center">
-      {isPlaying ?  <FaPauseCircle
-        onClick={handlePlayPause}
-        className="cursor-pointer hover:scale-[1.2] duration-200 text-[25px] md:text-[30px] lg:text-[35px]"
-        id='stopButton'
-      /> :
-      <FaPlayCircle
-        onClick={handlePlayPause}
-        className="cursor-pointer hover:scale-[1.2] duration-200 ml-[5px] text-[25px] md:text-[30px] lg:text-[35px]"
-      />}
-      </div>
+      <div className="w-full flex justify-end">
+        <div className="w-[60%] lg:w-[80vw] flex flex-col items-center justify-center gap-1 lg:gap-4">
+          <div className="flex items-center justify-center gap-2">
+            <BiSolidSkipPreviousCircle
+              onClick={prevSong}
+              className="cursor-pointer hover:scale-[1.2] duration-200 ml-[5px] text-[30px] md:text-[35px] lg:text-[40px]"
+            />
+            {isPlaying ? (
+              <FaPauseCircle
+                onClick={handlePlayPause}
+                className="cursor-pointer hover:scale-[1.2] duration-200 text-[25px] md:text-[30px] lg:text-[35px]"
+                id="stopButton"
+              />
+            ) : (
+              <FaPlayCircle
+                onClick={handlePlayPause}
+                className="cursor-pointer hover:scale-[1.2] duration-200 ml-[5px] text-[25px] md:text-[30px] lg:text-[35px]"
+              />
+            )}
+            <BiSolidSkipNextCircle
+              onClick={nextSong}
+              className="cursor-pointer hover:scale-[1.2] duration-200 ml-[5px] text-[30px] md:text-[35px] lg:text-[40px]"
+            />
+          </div>
+          <div
+            onClick={changeWidth}
+            ref={clickRef}
+            className="relative flex items-center cursor-pointer w-[80%] before:absolute before:top-[50%] before:left-0 before:h-[2px] before:w-full before:bg-white opacity-40 before:rounded-full"
+          >
+            <div
+              style={{ width: `${songP.songProg[0] + "%"}` }}
+              className="z-[10] h-[4px] bg-bgGradient1 rounded-xl"
+            ></div>
+          </div>
+        </div>
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default Player
+export default Player;

@@ -8,7 +8,9 @@ export const songsSlice = createSlice({
     value: [
       "greedy",
       "/src/assets/audioData/greedy.mp3",
-      "Tate McRae"
+      "Tate McRae",
+      1,
+      "https://is1-ssl.mzstatic.com/image/thumb/Music116/v4/1b/9a/d3/1b9ad377-0346-7c99-bbdd-6dbbaf0d1107/196871542654.jpg/400x400cc.jpg"
     ],
     songProg: [0, 0]
   },

@@ -15,7 +15,6 @@ function App() {
   const [isPlaying, setIsPlaying] = useState(false);
   const audioRef = useRef();
   const songD = useSelector((state) => state.song);
-  console.log(data);
 
   useEffect(() => {
     if (isPlaying) {

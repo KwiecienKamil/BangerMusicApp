@@ -17,7 +17,7 @@ import love from "../audioData/My Love.mp3";
 // import calm from "../audioData/Calm Down.mp3";
 // import harley from "../audioData/harley.mp3";
 // import now from "../audioData/Now.mp3";
-// import petit from "../audioData/petit.mp3";
+import petit from "../audioData/petit.mp3";
 import JID from "../audioData/jid.mp3";
 import thing from "../audioData/thing.mp3";
 // import Flow from "../audioData/Flow.mp3";
@@ -27,6 +27,12 @@ import loving from "../audioData/loving.mp3";
 import rusek from "../audioData/rusek.mp3";
 import sherine from "../audioData/sherine.mp3";
 import zhurek from "../audioData/zhurek.mp3";
+import overdrive from "../audioData/overdrive.mp3";
+import aigel from "../audioData/aigel.mp3"
+import emin from "../audioData/emin.mp3"
+import blind from "../audioData/blind.mp3"
+import shape from "../audioData/shape.mp3"
+import despa from "../audioData/despa.mp3"
 
 export const musicData = [
   {
@@ -90,9 +96,15 @@ export const musicData = [
   },
   {
     index: 10,
-    title: "Soak City (Do it)",
-    mp3: Soak,
+    title: "Sabry 'Aalil",
+    mp3: sherine,
   },
+  
+  // {
+  //   index: 10,
+  //   title: "Soak City (Do it)",
+  //   mp3: Soak,
+  // },
   // {
   //   index: 11,
   //   title: "9mm",
@@ -103,10 +115,15 @@ export const musicData = [
   //   title: "Daylight",
   //   mp3: dayli,
   // },
+  // {
+  //   index: 11,
+  //   title: "Tattoo",
+  //   mp3: tat,
+  // },
   {
     index: 11,
-    title: "Tattoo",
-    mp3: tat,
+    title: "Petit génie (feat. Abou Debeing & Lossa)",
+    mp3: petit,
   },
   // {
   //   index: 12,
@@ -138,11 +155,6 @@ export const musicData = [
   //   title: "Now And Then",
   //   mp3: now,
   // },
-  // {
-  //   index: 20,
-  //   title: "Petit génie (feat. Abou Debeing & Lossa)",
-  //   mp3: petit,
-  // },
   {
     index: 13,
     title: "Surround Sound (feat. 21 Savage & Baby Tate)",
@@ -163,11 +175,6 @@ export const musicData = [
     title: "Lose Control",
     mp3: lose,
   },
-  // {
-  //   index: 17,
-  //   title: "Overdrive (feat. Norma Jean Martine)",
-  //   mp3: overdrive,
-  // },
   {
     index: 16,
     title: "Zhurek",
@@ -183,14 +190,43 @@ export const musicData = [
     title: "Lovin On Me",
     mp3: loving,
   },
+  // {
+  //   index: 19,
+  //   title: "Ateşe Düştüm",
+  //   mp3: demir,
+  // },
   {
     index: 19,
-    title: "Ateşe Düştüm",
-    mp3: demir,
+    title: "Overdrive (feat. Norma Jean Martine)",
+    mp3: overdrive,
   },
   {
     index: 20,
-    title: "Sabry 'Aalil",
-    mp3: sherine,
+    title: 'Пыяла',
+    mp3: aigel,
+  },
+  {
+    index: 21,
+    title: 'Lose Yourself',
+    mp3: emin,
+    artist: "Eminem",
+    src: "https://cdn.radiofrance.fr/s3/cruiser-production/2020/10/f8994b7b-48bd-4cd3-bf2c-ef39c1a638bf/801x410_screenshot-eminem-loseyourself-clip.jpg"
+  },
+  {
+    index: 22,
+    title: 'Shape Of You',
+    mp3: shape,
+    artist: "Ed Sheeran",
+    src: "https://cdn.radiofrance.fr/s3/cruiser-production/2020/10/f8994b7b-48bd-4cd3-bf2c-ef39c1a638bf/801x410_screenshot-eminem-loseyourself-clip.jpg"
+  },
+  {
+    index: 23,
+    title: 'Blinding Lights',
+    mp3: blind,
+  },
+  {
+    index: 24,
+    title: 'Despacito',
+    mp3: despa,
   },
 ];

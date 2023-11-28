@@ -1,14 +1,19 @@
 import React from "react";
 import ArtistCard from "../components/ArtistCard";
 import { artists } from "../assets/artists";
-import Mainheader from "../components/Mainheader";
+import TopOFAllTIme from "../components/TopOFAllTIme";
 
 const TopArtists = () => {
   return (
-    <div className="min-h-screen w-full lg:flex lg:justify-end bg-[url('./assets/bg.jpg')] bg-bottom font-poppins font-semibold text-white pb-[150px]">
-      <div className="lg:w-[80vw]">
-        <Mainheader route="Top Artists" />
-        <div className="md:grid md:grid-cols-1 lg:grid-cols-2 w-full md:pt-[50px] lg:pt-[120px] ">
+    <div className="w-1/2 flex flex-col gap-4">
+     <TopOFAllTIme />
+      <div className="h-[40%] bg-navbar rounded-xl">
+        <div className="flex flex-col">
+          <div className="flex items-center justify-between px-4 pt-4">
+            <h2 className="uppercase ">Top Artists</h2>
+            <p className="p-2 bg-black rounded-full text-[14px]">Powered By Shazam</p>
+          </div>
+        <div className="md:grid md:grid-cols-1 lg:grid-cols-2">
           {artists.map((item) => {
             return (
               <ArtistCard
@@ -21,6 +26,7 @@ const TopArtists = () => {
               />
             );
           })}
+        </div>
         </div>
       </div>
     </div>

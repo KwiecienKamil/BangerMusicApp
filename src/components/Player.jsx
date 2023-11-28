@@ -47,6 +47,7 @@ const Player = ({ song, audioRef, isPlaying, setIsPlaying, data }) => {
     const title = curS[0].title;
     const getData = songD.filter((item) => item.title == title);
     const artist = getData[0].subtitle;
+    console.log(getData[0]);
     const img = getData[0].images.coverart;
     if(index == musicData.length - 1) {
       index = 0;
@@ -58,12 +59,12 @@ const Player = ({ song, audioRef, isPlaying, setIsPlaying, data }) => {
   };
 
   return (
-    <div className="z-10 fixed h-[60px] lg:h-[12%] bottom-[70px] lg:bottom-0 left-0 w-full bg-black flex justify-between font-poppins font-semibold text-white">
-      <div className="absolute left-0 h-full w-[34%] lg:w-[20%] bg-white/5 flex items-center justify-center gap-2">
+    <div className="z-10 fixed h-[60px] lg:h-[12%] bottom-[70px] lg:bottom-0 bg-black left-0 w-full flex justify-between font-poppins font-semibold text-white">
+      <div className="absolute left-0 h-full w-[34%] lg:w-[20%] bg-black flex items-center justify-center gap-4 ">
         <img
           src={songP.value[4]}
-          
-          className="h-[90%] rounded-lg"
+          alt="coverart"
+          className="h-[80%] rounded-full"
         />
         <div className="flex flex-col items-center justify-center gap-[2px]">
           <h1 className="text-center text-[11px] md:text-[14px] lg:text-[16px] trim line-clamp-1">
@@ -74,9 +75,9 @@ const Player = ({ song, audioRef, isPlaying, setIsPlaying, data }) => {
           </h2>
         </div>
       </div>
-      <div className="w-full flex justify-end">
+      <div className="w-full flex justify-end ">
         <div className="w-[60%] lg:w-[80vw] flex flex-col items-center justify-center gap-1 lg:gap-4">
-          <div className="flex items-center justify-center gap-2">
+          <div className="flex items-center justify-center gap-2 ">
             <BiSolidSkipPreviousCircle
               onClick={prevSong}
               className="cursor-pointer hover:scale-[1.2] duration-200 ml-[5px] text-[30px] md:text-[35px] lg:text-[40px]"

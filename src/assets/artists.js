@@ -3,14 +3,14 @@ export const artists = [
         key: 111,
         name: "Iñigo Quintero",
         age: 22,
-        src: "https://i.vimeocdn.com/portrait/46916756_640x640",
+        src: "https://uniondecineastas.es/wp-content/uploads/2020/10/iigo-quintero-scaled.jpg",
         profile: "https://www.shazam.com/pl/artist/i%C3%B1igo-quintero/1498499723"
     },
     {   
         key: 222,
         name: "Tate McRae",
         age: 20,
-        src: "https://th.bing.com/th?id=OIF.Gde2RX8%2bXjqwNbdJ26rR1Q&pid=ImgDet&rs=1",
+        src: "https://th.bing.com/th/id/OIP._G1E5IH9JcymlG1iu52SCAHaEK?rs=1&pid=ImgDetMain",
         profile: "https://www.shazam.com/pl/artist/tate-mcrae/1446365464"
     },
     {

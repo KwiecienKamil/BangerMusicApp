@@ -4,12 +4,12 @@ const ArtistCard = ({ artist, age, src, id, profile }) => {
   return (
     <div
       key={id}
-      className="flex items-center justify-center gap-4 mt-8 animate-slideup w-full"
+      className="flex items-center justify-center gap-2 mt-8 animate-slideup w-full"
     >
       <img
         src={src}
         alt="artist"
-        className="h-24 w-24 md:w-[150px] md:h-[150px] rounded-full"
+        className="h-32 w-32 rounded-full"
       />
       <div className="pl-[30px]">
         <p>{artist}</p>

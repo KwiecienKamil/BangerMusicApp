@@ -8,6 +8,7 @@ import { useEffect, useRef, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { currentProg } from "./services/state/redux/store";
 import { useGetTopChartsQuery } from "./services/TopChartsApi";
+import Reveal from "./components/Reveal";
 
 function App() {
   const { data, isFetching, error } = useGetTopChartsQuery();
@@ -32,6 +33,7 @@ function App() {
 
   return (
     <>
+    <Reveal>
       <Navbar />
       <Player
         song={songD}
@@ -56,6 +58,7 @@ function App() {
         <Route path="/topartists" element={<TopArtists />} />
         <Route path="/topsongs" element={<TopSongs />} />
       </Routes>
+      </Reveal>
     </>
   );
 }

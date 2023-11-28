@@ -2,7 +2,6 @@ import React from "react";
 import { useGetTopChartsQuery } from "../services/TopChartsApi";
 import Loader from "../components/Loader";
 import ChartsCard from "../components/ChartsCard";
-import Mainheader from "../components/Mainheader";
 
 const TopSongs = () => {
   const { data, isFetching } = useGetTopChartsQuery();
@@ -17,7 +16,6 @@ const TopSongs = () => {
   return (
     <div className="min-h-screen w-full lg:flex lg:justify-end bg-[url('./assets/bg.jpg')] font-poppins font-semibold text-white pb-[150px] md:pb-[200px]">
       <div className="lg:w-[80vw]">
-        <Mainheader route="Top Songs" />
         {topChartsFn()}
         <div className="grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
           {arr.map((item) => (

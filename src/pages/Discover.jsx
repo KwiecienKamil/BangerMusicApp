@@ -1,18 +1,22 @@
 import React from "react";
 import SongCart from "../components/SongCart";
 import Loader from "../components/Loader";
-import Mainheader from "../components/Mainheader";
+import Sponsored from "../components/Sponsored";
+import TopArtists from "./TopArtists";
 
 const Discover = ({ setIsPlaying, data, isFetching, error }) => {
   if (isFetching) return <Loader title="Loading..." />;
   if (error) return <Error />;
   return (
     <div className="bg-[url('./assets/bg.jpg')] bg-bottom font-poppins font-semibold text-white lg:flex lg:justify-end">
-      <div className="lg:w-[80vw]">
-        <Mainheader route="Discover" />
-        <div className="px-4 my-4 pb-32">
-          <div className=""></div>
-          <div className="grid grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-8 mt-4 md:px-12 lg:px-24 pb-4">
+      <div className="lg:w-[80vw] relative">
+          <Sponsored data={data} setIsPlaying={setIsPlaying}/>
+          <div className="flex gap-4 px-8">
+          <div className="flex flex-col w-1/2 bg-navbar rounded-xl">
+            <div className="text-center px-4 ">
+              <h2 className="py-4">Popular songs</h2>
+            </div>
+            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8 pb-32">
             {data?.tracks.map((song, i) => (
               <SongCart
                 key={song.key}
@@ -22,10 +26,12 @@ const Discover = ({ setIsPlaying, data, isFetching, error }) => {
                 setIsPlaying={setIsPlaying}
               />
             ))}
+            </div>
+          </div>
+          <TopArtists  setIsPlaying={setIsPlaying}/>
           </div>
         </div>
       </div>
-    </div>
   );
 };
 

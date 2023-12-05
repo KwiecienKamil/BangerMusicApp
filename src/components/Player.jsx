@@ -1,4 +1,4 @@
-import React, { useRef } from "react";
+import React, { useRef, useState } from "react";
 import { FaPauseCircle, FaPlayCircle } from "react-icons/fa";
 import { BiSolidSkipPreviousCircle } from "react-icons/bi";
 import { useDispatch, useSelector } from "react-redux";
@@ -7,9 +7,11 @@ import { musicData } from "../assets/audioData/musicData";
 import { current } from "../services/state/redux/store";
 
 const Player = ({ song, audioRef, isPlaying, setIsPlaying, data }) => {
+  const [songVolume, setSongVolume] = useState(10)
   const dispatch = useDispatch();
   const songP = useSelector((state) => state.song);
   const clickRef = useRef();
+  const volumeRef = useRef();
   const songD = data?.tracks.map((item) => item);
 
   const handlePlayPause = () => {
@@ -22,6 +24,14 @@ const Player = ({ song, audioRef, isPlaying, setIsPlaying, data }) => {
     const divprogress = (offset / width) * 100;
     audioRef.current.currentTime = (divprogress / 100) * songP.songProg[1];
   };
+  const changeVolume = (e) => {
+    let width = 100;
+    const offset = e.nativeEvent.offsetX;
+    const finalProgress = offset.toFixed(1)
+    const finalWidth = `${finalProgress[0] + "0%"}`
+    audioRef.current.volume = `0.${finalProgress[0]}`
+    setSongVolume(finalWidth);
+  }
 
   const nextSong = () => {
     let curIndex = parseInt(song.value[3]);
@@ -47,7 +57,6 @@ const Player = ({ song, audioRef, isPlaying, setIsPlaying, data }) => {
     const title = curS[0].title;
     const getData = songD.filter((item) => item.title == title);
     const artist = getData[0].subtitle;
-    console.log(getData[0]);
     const img = getData[0].images.coverart;
     if(index == musicData.length - 1) {
       index = 0;
@@ -107,9 +116,19 @@ const Player = ({ song, audioRef, isPlaying, setIsPlaying, data }) => {
             <div
               style={{ width: `${songP.songProg[0] + "%"}` }}
               className="z-[10] h-[4px] bg-bgGradient1 rounded-xl"
-            ></div>
+            ></div> 
           </div>
         </div>
+        <div
+            onClick={changeVolume}
+            ref={volumeRef}
+            className="relative flex items-center cursor-pointer w-[100px] before:absolute before:top-[50%] before:left-0 before:h-[2px] before:w-full before:bg-white opacity-40 before:rounded-full"
+          >
+            <div
+              style={{ width: `${songVolume + "0%"}` }}
+              className=" z-[10] h-[4px] bg-bgGradient1 rounded-xl"
+            ></div> 
+          </div>
       </div>
     </div>
   );

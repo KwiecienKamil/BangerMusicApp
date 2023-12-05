@@ -42,7 +42,7 @@ function App() {
         audioRef={audioRef}
         data={data}
       />
-      <audio ref={audioRef} src={songD.value[1]} onTimeUpdate={onPlaying} />
+      <audio ref={audioRef} src={songD.value[1]} onTimeUpdate={onPlaying}/>
       <Routes>
         <Route
           path="/"

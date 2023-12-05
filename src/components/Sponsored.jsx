@@ -18,7 +18,6 @@ const Sponsored = ({ data, setIsPlaying }) => {
       dispatch(current([title, mp3, artist, index, img]));
       dispatch(currentProg([0, 0]));
       setIsPlaying(false);
-      console.log([title, mp3, artist, index, img]);
     };
 
     const handleSponsoredDispatch = () => {
